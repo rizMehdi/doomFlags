@@ -5,9 +5,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import React, { useState, useRef } from "react";
-import { Slider } from "@/components/ui/slider";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+// import { Slider } from "@/components/ui/slider";
+// import { Card, CardContent } from "@/components/ui/card";
+// import { Button } from "@/components/ui/button";
+import Slider from '@mui/material/Slider';
+import { Card, CardContent } from "@mui/material/Slider";
+import { Button } from "@mui/material/Slider";
 import html2canvas from "html2canvas";
 
 
