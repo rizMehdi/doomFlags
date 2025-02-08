@@ -7,11 +7,11 @@ import WorldFlag from "react-world-flags"; // Import the WorldFlag component
 
 // Mock data: Percentage of land submerged per meter of sea-level rise
 const countryData = {
-  Netherlands: 6.2,
-  Bangladesh: 5.4,
-  UnitedKingdom: 1.8,
-  USA: 2.3,
-  India: 2.5,
+  NL: 6.2,  // Netherlands
+  BD: 5.4,  // Bangladesh
+  GB: 1.8,  // United Kingdom
+  US: 2.3,  // USA
+  IN: 2.5,  // India
 };
 
 const Flag = ({ country, waterLevel, refCallback }) => {
