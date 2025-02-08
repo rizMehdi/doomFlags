@@ -9,7 +9,12 @@ import React, { useState, useRef } from "react";
 // import { Card, CardContent } from "@/components/ui/card";
 // import { Button } from "@/components/ui/button";
 import Slider from '@mui/material/Slider';
-import { Card, CardContent } from "@mui/material/Slider";
+import { Card, CardContent } from "@mui/material";
+// import { Card, CardContent } from "@mui/material/Slider";
+
+// import { Card } from '@mui/material';  // Correct Card import
+// import Slider from '@mui/material/Slider';  // Correct Slider import
+
 import { Button } from "@mui/material/Slider";
 import html2canvas from "html2canvas";
 
