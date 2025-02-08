@@ -15,7 +15,7 @@ import { Card, CardContent } from "@mui/material";
 // import { Card } from '@mui/material';  // Correct Card import
 // import Slider from '@mui/material/Slider';  // Correct Slider import
 
-import { Button } from "@mui/material/Slider";
+import { Button } from "@mui/material";
 import html2canvas from "html2canvas";
 
 
