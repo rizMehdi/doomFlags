@@ -1,38 +1,14 @@
-// import React from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import React, { useState, useRef } from "react";
-// import { Slider } from "@/components/ui/slider";
-// import { Card, CardContent } from "@/components/ui/card";
-// import { Button } from "@/components/ui/button";
 import Slider from '@mui/material/Slider';
 import { Card, CardContent } from "@mui/material";
-// import { Card, CardContent } from "@mui/material/Slider";
-
-// import { Card } from '@mui/material';  // Correct Card import
-// import Slider from '@mui/material/Slider';  // Correct Slider import
-
 import { Button } from "@mui/material";
 import html2canvas from "html2canvas";
-
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
-
-
-
 
 // Mock data: Percentage of land submerged per meter of sea-level rise
 const countryData = {
@@ -60,7 +36,7 @@ const Flag = ({ country, waterLevel, refCallback }) => {
   );
 };
 
-export default function SeaLevelApp() {
+const SeaLevelApp = () => {
   const [waterLevel, setWaterLevel] = useState(0);
   const flagRefs = useRef({});
 
@@ -81,8 +57,8 @@ export default function SeaLevelApp() {
         min={0}
         max={10}
         step={0.5}
-        value={[waterLevel]} // Ensure value is an array
-        onValueChange={(value) => setWaterLevel(value[0])} // Handle array input
+        value={waterLevel} // Single value instead of array
+        onChange={(event, newValue) => setWaterLevel(newValue)} // Corrected onChange
       />
       <p className="text-gray-700 text-sm mt-2">Water Level: {waterLevel} meters</p>
       <div className="grid grid-cols-2 gap-4 mt-4">
@@ -103,4 +79,13 @@ export default function SeaLevelApp() {
       </div>
     </div>
   );
-}
+};
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <SeaLevelApp />
+  </React.StrictMode>
+);
+
+reportWebVitals();
