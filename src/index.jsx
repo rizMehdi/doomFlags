@@ -1,22 +1,21 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { Slider } from "@mui/material";
 import { Card, CardContent } from "@mui/material";
 import { Button } from "@mui/material";
 import html2canvas from "html2canvas";
-import flags from "svg-country-flags"; // Import flags package
+import WorldFlag from "react-world-flags"; // Import the WorldFlag component
 
 // Mock data: Percentage of land submerged per meter of sea-level rise
 const countryData = {
-  "Netherlands": 6.2,
-  "Bangladesh": 5.4,
-  "United Kingdom": 1.8,
-  "USA": 2.3,
-  "India": 2.5,
+  Netherlands: 6.2,
+  Bangladesh: 5.4,
+  UnitedKingdom: 1.8,
+  USA: 2.3,
+  India: 2.5,
 };
 
 const Flag = ({ country, waterLevel, refCallback }) => {
   const percentSubmerged = Math.min(countryData[country] * waterLevel, 100);
-  const flagUrl = flags.get(country); // Fetch flag URL based on country code
 
   return (
     <div ref={refCallback} className="relative w-40 h-24 border border-gray-300 overflow-hidden">
@@ -24,8 +23,8 @@ const Flag = ({ country, waterLevel, refCallback }) => {
       <div className="absolute inset-0 bg-gray-200 flex items-center justify-center">
         <span className="text-black font-bold text-sm">{country}</span>
       </div>
-      {/* Flag image */}
-      <img src={flagUrl} alt={`${country} flag`} className="absolute inset-0 w-full h-full object-contain" />
+      {/* Flag image using WorldFlag */}
+      <WorldFlag code={country} className="absolute inset-0 w-full h-full object-contain" />
       {/* Blue stripe representing submerged percentage */}
       <div
         className="absolute bottom-0 bg-blue-500"
@@ -35,7 +34,7 @@ const Flag = ({ country, waterLevel, refCallback }) => {
   );
 };
 
-const SeaLevelApp = () => {
+export default function SeaLevelApp() {
   const [waterLevel, setWaterLevel] = useState(0);
   const flagRefs = useRef({});
 
@@ -56,8 +55,8 @@ const SeaLevelApp = () => {
         min={0}
         max={10}
         step={0.5}
-        value={waterLevel} // Single value instead of array
-        onChange={(event, newValue) => setWaterLevel(newValue)} // Corrected onChange
+        value={[waterLevel]} // Ensure value is an array
+        onChange={(e, value) => setWaterLevel(value)} // Handle slider input change
       />
       <p className="text-gray-700 text-sm mt-2">Water Level: {waterLevel} meters</p>
       <div className="grid grid-cols-2 gap-4 mt-4">
@@ -78,9 +77,7 @@ const SeaLevelApp = () => {
       </div>
     </div>
   );
-};
-
-export default SeaLevelApp;
+}
 /////////////////
 
 // import React from 'react';
