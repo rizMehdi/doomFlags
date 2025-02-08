@@ -20,9 +20,9 @@ const Flag = ({ country, waterLevel, refCallback }) => {
   const flagUrl = `https://flagcdn.com/w320/${country.toLowerCase()}.png`;
 
   return (
-    <div ref={refCallback} className="relative w-40 h-24 border-2 border-red-500 overflow-hidden">
+    <div ref={refCallback} className="relative w-40 h-24 overflow-hidden" style={{ border: '2px solid red !important' }}>
       {/* Base flag with text */}
-      <div className="absolute inset-0 bg-gray-200 flex items-center justify-center z-10 border-2 border-blue-500">
+      <div className="absolute inset-0 bg-gray-200 flex items-center justify-center" style={{ zIndex: 10, border: '2px solid blue !important' }}>
         <span className="text-black font-bold text-sm">{country}</span>
       </div>
 
@@ -30,15 +30,18 @@ const Flag = ({ country, waterLevel, refCallback }) => {
       <img
         src={flagUrl}
         alt={country}
-        className="absolute inset-0 w-full h-full object-cover z-0 border-2 border-green-500"
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ zIndex: 0, border: '2px solid green !important' }}
       />
 
       {/* Blue stripe representing submerged percentage */}
       <div
-        className="absolute bottom-0 bg-blue-500 z-20 border-2 border-yellow-500"
+        className="absolute bottom-0 bg-blue-500"
         style={{
           height: `${percentSubmerged}%`,
           width: "100%",
+          zIndex: 20,
+          border: '2px solid yellow !important',
         }}
       />
     </div>
@@ -61,7 +64,7 @@ const SeaLevelApp = () => {
 
   return (
     <div className="p-6 max-w-lg mx-auto">
-      <h1 className="text-xl font-bold mb-4 border-2 border-orange-500">Sea Level Impact on Flags</h1>
+      <h1 className="text-xl font-bold mb-4" style={{ border: '2px solid orange !important' }}>Sea Level Impact on Flags</h1>
       <Slider
         min={0}
         max={10}
@@ -69,19 +72,19 @@ const SeaLevelApp = () => {
         value={waterLevel} // Single value instead of array
         onChange={(event, newValue) => setWaterLevel(newValue)} // Corrected onChange
       />
-      <p className="text-gray-700 text-sm mt-2 border-2 border-purple-500">
+      <p className="text-gray-700 text-sm mt-2" style={{ border: '2px solid purple !important' }}>
         Water Level: {waterLevel} meters
       </p>
       <div className="grid grid-cols-2 gap-4 mt-4">
         {Object.keys(countryData).map((country) => (
           <Card key={country}>
-            <CardContent className="flex flex-col items-center border-2 border-teal-500">
+            <CardContent className="flex flex-col items-center" style={{ border: '2px solid teal !important' }}>
               <Flag
                 country={country}
                 waterLevel={waterLevel}
                 refCallback={(el) => (flagRefs.current[country] = el)}
               />
-              <Button className="mt-2 border-2 border-pink-500" onClick={() => downloadFlag(country)}>
+              <Button className="mt-2" onClick={() => downloadFlag(country)} style={{ border: '2px solid pink !important' }}>
                 Download
               </Button>
             </CardContent>
@@ -99,6 +102,7 @@ root.render(
     <SeaLevelApp />
   </React.StrictMode>
 );
+
 // /////////////////
 
 // // import React from 'react';
