@@ -17,25 +17,31 @@ code {
   font-family: sans-serif;
 }
 
-.flag {
-  width: 200px;
-  height: 200px;
-  border: 1px solid #000;
-  position: relative;
+.flag-container {
   margin-top: 20px;
+  text-align: center;
+}
+
+.flag {
+  position: relative;
+  width: 320px;  /* Set flag width */
+  height: 240px; /* Set flag height */
+  background-size: cover;
+  background-position: center;
+  border: 1px solid #000;
+  overflow: hidden;
+  margin: 0 auto;
 }
 
 .blue-stripe {
-  background-color: blue;
-  width: 100%;
   position: absolute;
   bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 255, 0.5); /* blue overlay with half transparency */
 }
 
 .flag-label {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  color: white;
+  margin-top: 10px;
+  color: black;
   font-weight: bold;
 }
