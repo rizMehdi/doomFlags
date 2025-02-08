@@ -1,10 +1,8 @@
 import React, { useState, useRef } from "react";
 import ReactDOM from 'react-dom/client';
-import Slider from '@mui/material/Slider';
-import { Card, CardContent } from "@mui/material";
-import { Button } from "@mui/material";
-import html2canvas from "html2canvas";
 import './index.css';
+import { Slider, Card, CardContent, Button } from '@mui/material';
+import html2canvas from "html2canvas";
 
 // Mock data: Percentage of land submerged per meter of sea-level rise
 const countryData = {
@@ -24,7 +22,7 @@ const Flag = ({ country, waterLevel, refCallback }) => {
   return (
     <div ref={refCallback} className="relative w-40 h-24 border border-gray-300 overflow-hidden">
       {/* Base flag */}
-      <div className="absolute inset-0 bg-gray-200 flex items-center justify-center z-10">
+      <div className="absolute inset-0 bg-gray-200 flex items-center justify-center z-10" style={{ border: "2px solid red" }}>
         <span className="text-black font-bold text-sm">{country}</span>
       </div>
       {/* Flag image */}
@@ -32,11 +30,16 @@ const Flag = ({ country, waterLevel, refCallback }) => {
         src={flagUrl}
         alt={country}
         className="absolute inset-0 w-full h-full object-contain z-0" // Lower z-index for flag
+        style={{ border: "2px solid green" }} // Border for debugging flag image
       />
       {/* Blue stripe representing submerged percentage */}
       <div
         className="absolute bottom-0 bg-blue-500 z-20"
-        style={{ height: `${percentSubmerged}%`, width: "100%" }}
+        style={{
+          height: `${percentSubmerged}%`,
+          width: "100%",
+          borderTop: "1px solid rgba(0, 0, 0, 0.2)", // Added for debugging
+        }}
       />
     </div>
   );
@@ -87,14 +90,13 @@ const SeaLevelApp = () => {
   );
 };
 
+// Render the SeaLevelApp component to the root
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <SeaLevelApp />
   </React.StrictMode>
 );
-
-reportWebVitals();
 
 // /////////////////
 
