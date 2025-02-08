@@ -16,11 +16,13 @@ const Flag = ({ country, waterLevel }) => {
   const percentSubmerged = Math.min(countryData[country] * waterLevel, 100);
   const flagUrl = `https://flagcdn.com/w320/${country.toLowerCase()}.png`;
   return (
-    <div className="flag" style={{ backgroundImage: `url(${flagUrl})` }}>
-      <div
-        className="blue-stripe"
-        style={{ height: `${percentSubmerged}%` }}
-      ></div>
+    <div className="flag-container">
+      <div className="flag" style={{ backgroundImage: `url(${flagUrl})` }}>
+        <div
+          className="blue-stripe"
+          style={{ height: `${percentSubmerged}%` }}
+        ></div>
+      </div>
       <div className="flag-label">{country}</div>
     </div>
   );
@@ -40,8 +42,10 @@ function App() {
         onChange={(e, newValue) => setWaterLevel(newValue)}
         aria-label="Water Level Slider"
       />
-      {/* Example: rendering one flag (e.g. NL). Add more flags as needed */}
-      <Flag country="NL" waterLevel={waterLevel} />
+      {/* Rendering multiple flags */}
+      {Object.keys(countryData).map((country) => (
+        <Flag key={country} country={country} waterLevel={waterLevel} />
+      ))}
     </div>
   );
 }
