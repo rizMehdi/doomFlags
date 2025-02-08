@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import Slider from '@mui/material/Slider';
 import { Card, CardContent } from "@mui/material";
 import { Button } from "@mui/material";
