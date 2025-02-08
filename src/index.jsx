@@ -13,10 +13,21 @@ const countryData = {
 };
 
 const Flag = ({ country, waterLevel }) => {
-  const percentSubmerged = Math.min(countryData[country] * waterLevel, 100);
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const flagUrl = `https://flagcdn.com/w320/${country.toLowerCase()}.png`;
+
+  const handleImageLoad = (e) => {
+    setDimensions({
+      width: e.target.naturalWidth,
+      height: e.target.naturalHeight,
+    });
+  };
+
+  const percentSubmerged = Math.min(countryData[country] * waterLevel, 100);
+
   return (
-    <div className="flag-container">
+    <div className="flag-container" style={{ width: dimensions.width, height: dimensions.height }}>
+      <img src={flagUrl} alt={`${country} flag`} onLoad={handleImageLoad} style={{ display: 'none' }} />
       <div className="flag" style={{ backgroundImage: `url(${flagUrl})` }}>
         <div
           className="blue-stripe"
@@ -57,7 +68,6 @@ if (rootElement) {
 } else {
   console.error("Root element not found");
 }
-
 
 
 // import React, { useState, useRef } from "react";
