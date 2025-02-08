@@ -21,24 +21,24 @@ const Flag = ({ country, waterLevel, refCallback }) => {
 
   return (
     <div ref={refCallback} className="relative w-40 h-24 border border-gray-300 overflow-hidden">
-      {/* Base flag */}
-      <div className="absolute inset-0 bg-gray-200 flex items-center justify-center z-10" style={{ border: "2px solid red" }}>
+      {/* Base flag with text */}
+      <div className="absolute inset-0 bg-gray-200 flex items-center justify-center z-10">
         <span className="text-black font-bold text-sm">{country}</span>
       </div>
+
       {/* Flag image */}
       <img
         src={flagUrl}
         alt={country}
-        className="absolute inset-0 w-full h-full object-contain z-0" // Lower z-index for flag
-        style={{ border: "2px solid green" }} // Border for debugging flag image
+        className="absolute inset-0 w-full h-full object-cover z-0" // Use object-cover to fill the space
       />
+
       {/* Blue stripe representing submerged percentage */}
       <div
         className="absolute bottom-0 bg-blue-500 z-20"
         style={{
           height: `${percentSubmerged}%`,
           width: "100%",
-          borderTop: "1px solid rgba(0, 0, 0, 0.2)", // Added for debugging
         }}
       />
     </div>
