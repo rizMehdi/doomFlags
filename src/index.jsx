@@ -4,7 +4,7 @@ import "./index.css";
 import { Slider, IconButton, MenuItem, Select, FormControl, InputLabel } from "@mui/material";
 import DownloadIcon from '@mui/icons-material/Download';
 import SettingsIcon from '@mui/icons-material/Settings';
-import html2canvas from "html2canvas";
+import { toPng } from 'html-to-image';
 
 // Mock data: Percentage submerged per meter of sea-level rise
 const countryData = {
@@ -30,12 +30,16 @@ const Flag = ({ country, waterLevel, blueShade }) => {
 
   const handleDownload = () => {
     const flagElement = document.getElementById(`flag-content-${country}`);
-    html2canvas(flagElement).then((canvas) => {
-      const link = document.createElement("a");
-      link.download = `${country}-flag-${waterLevel}m.png`;
-      link.href = canvas.toDataURL("image/png");
-      link.click();
-    });
+    toPng(flagElement)
+      .then((dataUrl) => {
+        const link = document.createElement("a");
+        link.download = `${country}-flag-${waterLevel}m.png`;
+        link.href = dataUrl;
+        link.click();
+      })
+      .catch((error) => {
+        console.error('oops, something went wrong!', error);
+      });
   };
 
   const percentSubmerged = Math.min(countryData[country] * waterLevel, 100);
@@ -43,13 +47,8 @@ const Flag = ({ country, waterLevel, blueShade }) => {
   return (
     <div className="flag-container" style={{ width: dimensions.width + 20, height: dimensions.height }}>
       <div id={`flag-content-${country}`} className="flag-content" style={{ width: dimensions.width, height: dimensions.height }}>
-        <img src={flagUrl} alt={`${country} flag`} onLoad={handleImageLoad} style={{ display: 'none' }} />
-        <div className="flag" style={{ backgroundImage: `url(${flagUrl})`, height: dimensions.height }}>
-          <div
-            className="blue-stripe"
-            style={{ height: `${percentSubmerged}%`, backgroundColor: blueShade }}
-          ></div>
-        </div>
+        <img src={flagUrl} alt={`${country} flag`} onLoad={handleImageLoad} style={{ width: '100%', height: '100%' }} />
+        <div className="blue-stripe" style={{ height: `${percentSubmerged}%`, backgroundColor: blueShade }}></div>
       </div>
       <div className="download-section">
         <IconButton onClick={handleDownload} aria-label="download">
