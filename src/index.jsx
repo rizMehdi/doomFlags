@@ -19,7 +19,7 @@ const countryData = {
 
   const Flag = ({ country, waterLevel, blueShade }) => {
   const [dimensions, setDimensions] = useState({ width: 0, height: 200 }); // Fixed height
-  const flagUrl = `https://flagcdn.com/w320/${country.toLowerCase()}.png`;
+  const flagUrl = `https://flagcdn.com/w1280/${country.toLowerCase()}.png`;
 
   const handleImageLoad = (e) => {
     const aspectRatio = e.target.naturalWidth / e.target.naturalHeight;
