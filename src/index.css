@@ -12,13 +12,36 @@ code {
     monospace;
 }
 
+
 .app {
   padding: 20px;
   font-family: sans-serif;
 }
 
+.settings-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.settings-tab {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  z-index: 1000;
+}
+
+.flags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
 .flag-container {
-  margin-top: 20px;
   text-align: center;
   position: relative;
   display: inline-block;
@@ -37,7 +60,6 @@ code {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: #6699CC; /* opaque blue overlay */
 }
 
 .flag-label {
