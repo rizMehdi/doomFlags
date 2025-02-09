@@ -32,7 +32,7 @@ const Flag = ({ country, waterLevel, blueShade }) => {
     const flagContainer = document.getElementById(`flag-container-${country}`);
     html2canvas(flagContainer).then((canvas) => {
       const link = document.createElement("a");
-      link.download = `${country}-flag.png`;
+      link.download = `${country}-flag-${waterLevel}m.png`;
       link.href = canvas.toDataURL("image/png");
       link.click();
     });
