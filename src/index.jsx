@@ -41,7 +41,7 @@ const Flag = ({ country, waterLevel, blueShade }) => {
   const percentSubmerged = Math.min(countryData[country] * waterLevel, 100);
 
   return (
-    <div className="flag-container" style={{ width: dimensions.width + 20, height: dimensions.height + 20 }}>
+    <div className="flag-container" style={{ width: dimensions.width + 20, height: dimensions.height }}>
       <div id={`flag-content-${country}`} className="flag-content" style={{ width: dimensions.width, height: dimensions.height }}>
         <img src={flagUrl} alt={`${country} flag`} onLoad={handleImageLoad} style={{ display: 'none' }} />
         <div className="flag" style={{ backgroundImage: `url(${flagUrl})`, height: dimensions.height }}>
@@ -50,12 +50,12 @@ const Flag = ({ country, waterLevel, blueShade }) => {
             style={{ height: `${percentSubmerged}%`, backgroundColor: blueShade }}
           ></div>
         </div>
-        <div className="flag-label">{country}</div>
       </div>
-      <div className="download-button">
+      <div className="download-section">
         <IconButton onClick={handleDownload} aria-label="download">
           <DownloadIcon />
         </IconButton>
+        <span className="country-code">{country}</span>
       </div>
     </div>
   );
@@ -124,7 +124,6 @@ if (rootElement) {
 } else {
   console.error("Root element not found");
 }
-
 // import React, { useState } from "react";
 // import ReactDOM from "react-dom/client";
 // import "./index.css";
