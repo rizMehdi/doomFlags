@@ -128,7 +128,7 @@ function App() {
           )}
         </div>
       )}
-      <h1>Future Flags of Partially Submerged Nations</h1>
+      <h1>Future Flags of The Submerged Nations</h1>
       <p className="paragraph">Move the slider to see the impact of sea-level rise on flags. The blue stripe represents the percentage of the country submerged under water due to melting ice caps.</p>
       <div className="slider-container">
         <Slider
