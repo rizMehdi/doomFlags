@@ -12,6 +12,11 @@ code {
     monospace;
 }
 
+.app {
+  padding: 20px;
+  font-family: sans-serif;
+}
+
 
 .flag-container {
   text-align: center;
@@ -23,6 +28,22 @@ code {
   border-radius: 10px; /* Optional: Add rounded corners */
 }
 
+.flag {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid #000;
+  overflow: hidden;
+}
+
+.blue-stripe {
+  position: absolute;
+  bottom: 0; /* Ensure the water rises from the bottom */
+  width: 100%;
+  background-color: #6699CC; /* Default blue color */
+}
 
 .download-section {
   display: flex;
@@ -35,6 +56,7 @@ code {
   margin-left: 5px;
   font-weight: bold;
 }
+
 
 /* 
 .app {
