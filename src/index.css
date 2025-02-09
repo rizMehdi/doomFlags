@@ -109,6 +109,11 @@ code {
   font-weight: bold;
 }
 
+/* .slider-container {
+  width: 300px; 
+  margin: 0 auto; 
+} */
+
 .slider-container {
   width: 300px; /* Set the width of the slider */
   margin: 0 auto; /* Center the slider */

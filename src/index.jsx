@@ -45,7 +45,7 @@ const Flag = ({ country, waterLevel, blueShade }) => {
   const percentSubmerged = Math.min(countryData[country] * waterLevel, 100);
 
   return (
-    <div className="flag-container" style={{ width: dimensions.width + 20, height: dimensions.height + 40 }}>
+    <div className="flag-container" style={{ width: dimensions.width + 10, height: dimensions.height + 40 }}>
       <div id={`flag-content-${country}`} className="flag-content" style={{ width: dimensions.width, height: dimensions.height }}>
         <img src={flagUrl} alt={`${country} flag`} onLoad={handleImageLoad} className="flag-image" />
         <div className="blue-stripe" style={{ height: `${percentSubmerged}%`, backgroundColor: blueShade }}></div>
