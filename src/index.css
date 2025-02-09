@@ -11,8 +11,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-
 .app {
   padding: 20px;
   font-family: sans-serif;
@@ -73,3 +71,46 @@ code {
   bottom: -40px; /* Adjust this value as needed */
   right: 0;
 }
+
+/* 
+.app {
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+.flag-container {
+  margin-top: 20px;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+}
+
+.flag {
+  position: relative;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid #000;
+  overflow: hidden;
+}
+
+.blue-stripe {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #6699CC; 
+}
+
+.flag-label {
+  margin-top: 10px;
+  color: black;
+  font-weight: bold;
+}
+
+.download-button {
+  position: absolute;
+  bottom: -40px; 
+  right: 0;
+} 
+
+*/
