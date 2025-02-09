@@ -116,5 +116,14 @@ code {
 
 .slider-container {
   width: 500px; /* Set the width of the slider */
-  margin: 0 auto; /* Center the slider */
+  margin: 20px 0; /* Add top and bottom margin */
+  text-align: left; /* Align text to the left */
+  padding-left: 20px; /* Add left padding to align with the paragraph */
+}
+
+.paragraph {
+  max-width: 600px; /* Set a maximum width for the paragraph */
+  margin: 0 auto; /* Center the paragraph */
+  text-align: left; /* Align text to the left */
+  line-height: 1.6; /* Improve readability */
 }
