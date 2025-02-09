@@ -45,6 +45,7 @@ code {
   position: relative;
   display: inline-block;
   padding-left: 10px; /* Add padding on the left */
+  padding-top: 10px; /* Add padding on the left */
   padding-right: 10px; /* Add padding on the right */
   background-color: #ffffff; /* Optional: Add a background color to the padding area */
   border-radius: 10px; /* Optional: Add rounded corners */

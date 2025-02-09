@@ -30,7 +30,7 @@ const Flag = ({ country, waterLevel, blueShade }) => {
 
   const handleDownload = () => {
     const flagElement = document.getElementById(`flag-content-${country}`);
-    toPng(flagElement)
+    toPng(flagElement, { quality: 1, pixelRatio: 2 }) // Increase pixelRatio for higher resolution
       .then((dataUrl) => {
         const link = document.createElement("a");
         link.download = `${country}-flag-${waterLevel}m.png`;
@@ -124,14 +124,14 @@ if (rootElement) {
 } else {
   console.error("Root element not found");
 }
-
-
+  
 // import React, { useState } from "react";
 // import ReactDOM from "react-dom/client";
 // import "./index.css";
-// import { Slider, IconButton } from "@mui/material";
+// import { Slider, IconButton, MenuItem, Select, FormControl, InputLabel } from "@mui/material";
 // import DownloadIcon from '@mui/icons-material/Download';
-// import html2canvas from "html2canvas";
+// import SettingsIcon from '@mui/icons-material/Settings';
+// import { toPng } from 'html-to-image';
 
 // // Mock data: Percentage submerged per meter of sea-level rise
 // const countryData = {
@@ -143,7 +143,7 @@ if (rootElement) {
 //   PK: 3.5, // Pakistan
 // };
 
-// const Flag = ({ country, waterLevel }) => {
+// const Flag = ({ country, waterLevel, blueShade }) => {
 //   const [dimensions, setDimensions] = useState({ width: 0, height: 200 }); // Fixed height
 //   const flagUrl = `https://flagcdn.com/w320/${country.toLowerCase()}.png`;
 
@@ -156,31 +156,32 @@ if (rootElement) {
 //   };
 
 //   const handleDownload = () => {
-//     const flagContainer = document.getElementById(`flag-container-${country}`);
-//     html2canvas(flagContainer).then((canvas) => {
-//       const link = document.createElement("a");
-//       link.download = `${country}-flag.png`;
-//       link.href = canvas.toDataURL("image/png");
-//       link.click();
-//     });
+//     const flagElement = document.getElementById(`flag-content-${country}`);
+//     toPng(flagElement)
+//       .then((dataUrl) => {
+//         const link = document.createElement("a");
+//         link.download = `${country}-flag-${waterLevel}m.png`;
+//         link.href = dataUrl;
+//         link.click();
+//       })
+//       .catch((error) => {
+//         console.error('oops, something went wrong!', error);
+//       });
 //   };
 
 //   const percentSubmerged = Math.min(countryData[country] * waterLevel, 100);
 
 //   return (
-//     <div className="flag-container" id={`flag-container-${country}`} style={{ width: dimensions.width, height: dimensions.height }}>
-//       <img src={flagUrl} alt={`${country} flag`} onLoad={handleImageLoad} style={{ display: 'none' }} />
-//       <div className="flag" style={{ backgroundImage: `url(${flagUrl})`, height: dimensions.height }}>
-//         <div
-//           className="blue-stripe"
-//           style={{ height: `${percentSubmerged}%` }}
-//         ></div>
+//     <div className="flag-container" style={{ width: dimensions.width + 20, height: dimensions.height }}>
+//       <div id={`flag-content-${country}`} className="flag-content" style={{ width: dimensions.width, height: dimensions.height }}>
+//         <img src={flagUrl} alt={`${country} flag`} onLoad={handleImageLoad} style={{ width: '100%', height: '100%' }} />
+//         <div className="blue-stripe" style={{ height: `${percentSubmerged}%`, backgroundColor: blueShade }}></div>
 //       </div>
-//       <div className="flag-label">{country}</div>
-//       <div className="download-button">
+//       <div className="download-section">
 //         <IconButton onClick={handleDownload} aria-label="download">
 //           <DownloadIcon />
 //         </IconButton>
+//         <span className="country-code">{country}</span>
 //       </div>
 //     </div>
 //   );
@@ -188,10 +189,43 @@ if (rootElement) {
 
 // function App() {
 //   const [waterLevel, setWaterLevel] = useState(0);
+//   const [settingsOpen, setSettingsOpen] = useState(false);
+//   const [blueShade, setBlueShade] = useState("#6699CC");
+
+//   const handleSettingsToggle = () => {
+//     setSettingsOpen(!settingsOpen);
+//   };
+
+//   const handleBlueShadeChange = (event) => {
+//     setBlueShade(event.target.value);
+//   };
 
 //   return (
 //     <div className="app">
-//       <h1>Sea Level Impact App</h1>
+//       <div className="settings-icon">
+//         <IconButton onClick={handleSettingsToggle} aria-label="settings">
+//           <SettingsIcon />
+//         </IconButton>
+//       </div>
+//       {settingsOpen && (
+//         <div className="settings-tab">
+//           <FormControl fullWidth>
+//             <InputLabel id="blue-shade-label">Blue Shade</InputLabel>
+//             <Select
+//               labelId="blue-shade-label"
+//               value={blueShade}
+//               label="Blue Shade"
+//               onChange={handleBlueShadeChange}
+//             >
+//               <MenuItem value="#6699CC">Light Blue</MenuItem>
+//               <MenuItem value="#336699">Medium Blue</MenuItem>
+//               <MenuItem value="#003366">Dark Blue</MenuItem>
+//             </Select>
+//           </FormControl>
+//         </div>
+//       )}
+//       <h1>Future Flags of Partially Submerged Nations</h1>
+//       Move the slider to see the impact of sea-level rise on flags. The blue stripe represents the percentage of the country submerged under water due to melting ice caps.
 //       <Slider
 //         min={0}
 //         max={10}
@@ -201,9 +235,11 @@ if (rootElement) {
 //         aria-label="Water Level Slider"
 //       />
 //       {/* Rendering multiple flags */}
-//       {Object.keys(countryData).map((country) => (
-//         <Flag key={country} country={country} waterLevel={waterLevel} />
-//       ))}
+//       <div className="flags-container">
+//         {Object.keys(countryData).map((country) => (
+//           <Flag key={country} country={country} waterLevel={waterLevel} blueShade={blueShade} />
+//         ))}
+//       </div>
 //     </div>
 //   );
 // }
