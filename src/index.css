@@ -117,7 +117,7 @@ code {
 .slider-container {
   width: 500px; /* Set the width of the slider */
   margin: 20px 0; /* Add top and bottom margin */
-  text-align: left; /* Align text to the left */
+  /* text-align: left;  Align text to the left */
   padding-left: 20px; /* Add left padding to align with the paragraph */
 }
 
