@@ -11,6 +11,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 .app {
   padding: 20px;
   font-family: sans-serif;
@@ -81,6 +82,8 @@ code {
   bottom: -40px; /* Adjust this value as needed */
   right: 0;
 }
+
+
 
 /* 
 .app {

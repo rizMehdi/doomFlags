@@ -29,7 +29,7 @@ const Flag = ({ country, waterLevel, blueShade }) => {
   };
 
   const handleDownload = () => {
-    const flagElement = document.getElementById(`flag-${country}`);
+    const flagElement = document.getElementById(`flag-content-${country}`);
     html2canvas(flagElement).then((canvas) => {
       const link = document.createElement("a");
       link.download = `${country}-flag-${waterLevel}m.png`;
@@ -42,7 +42,7 @@ const Flag = ({ country, waterLevel, blueShade }) => {
 
   return (
     <div className="flag-container" style={{ width: dimensions.width, height: dimensions.height }}>
-      <div id={`flag-${country}`} className="flag-content">
+      <div id={`flag-content-${country}`} className="flag-content">
         <img src={flagUrl} alt={`${country} flag`} onLoad={handleImageLoad} style={{ display: 'none' }} />
         <div className="flag" style={{ backgroundImage: `url(${flagUrl})`, height: dimensions.height }}>
           <div
