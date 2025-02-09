@@ -42,7 +42,7 @@ const Flag = ({ country, waterLevel }) => {
   return (
     <div className="flag-container" id={`flag-container-${country}`} style={{ width: dimensions.width, height: dimensions.height }}>
       <img src={flagUrl} alt={`${country} flag`} onLoad={handleImageLoad} style={{ display: 'none' }} />
-      <div id={`flag-${country}`} className="flag" style={{ backgroundImage: `url(${flagUrl})`, height: dimensions.height }}>
+      <div className="flag" style={{ backgroundImage: `url(${flagUrl})`, height: dimensions.height }}>
         <div
           className="blue-stripe"
           style={{ height: `${percentSubmerged}%` }}
