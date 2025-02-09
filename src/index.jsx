@@ -26,8 +26,8 @@ const Flag = ({ country, waterLevel }) => {
   };
 
   const handleDownload = () => {
-    const flagElement = document.getElementById(`flag-${country}`);
-    html2canvas(flagElement).then((canvas) => {
+    const flagContainer = document.getElementById(`flag-container-${country}`);
+    html2canvas(flagContainer).then((canvas) => {
       const link = document.createElement("a");
       link.download = `${country}-flag.png`;
       link.href = canvas.toDataURL("image/png");
@@ -38,7 +38,7 @@ const Flag = ({ country, waterLevel }) => {
   const percentSubmerged = Math.min(countryData[country] * waterLevel, 100);
 
   return (
-    <div className="flag-container" style={{ width: dimensions.width, height: dimensions.height }}>
+    <div className="flag-container" id={`flag-container-${country}`} style={{ width: dimensions.width, height: dimensions.height }}>
       <img src={flagUrl} alt={`${country} flag`} onLoad={handleImageLoad} style={{ display: 'none' }} />
       <div id={`flag-${country}`} className="flag" style={{ backgroundImage: `url(${flagUrl})` }}>
         <div
@@ -47,9 +47,11 @@ const Flag = ({ country, waterLevel }) => {
         ></div>
       </div>
       <div className="flag-label">{country}</div>
-      <IconButton onClick={handleDownload} aria-label="download">
-        <DownloadIcon />
-      </IconButton>
+      <div className="download-button">
+        <IconButton onClick={handleDownload} aria-label="download">
+          <DownloadIcon />
+        </IconButton>
+      </div>
     </div>
   );
 };
