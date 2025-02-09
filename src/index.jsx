@@ -12,16 +12,18 @@ const countryData = {
   GB: 1.8, // United Kingdom
   US: 2.3, // USA
   IN: 2.5, // India
+  PK: 3.5, // Pakistan
 };
 
 const Flag = ({ country, waterLevel }) => {
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const [dimensions, setDimensions] = useState({ width: 0, height: 200 }); // Fixed height
   const flagUrl = `https://flagcdn.com/w320/${country.toLowerCase()}.png`;
 
   const handleImageLoad = (e) => {
+    const aspectRatio = e.target.naturalWidth / e.target.naturalHeight;
     setDimensions({
-      width: e.target.naturalWidth,
-      height: e.target.naturalHeight,
+      width: 200 * aspectRatio, // Adjust width based on aspect ratio
+      height: 200, // Fixed height
     });
   };
 
@@ -40,7 +42,7 @@ const Flag = ({ country, waterLevel }) => {
   return (
     <div className="flag-container" id={`flag-container-${country}`} style={{ width: dimensions.width, height: dimensions.height }}>
       <img src={flagUrl} alt={`${country} flag`} onLoad={handleImageLoad} style={{ display: 'none' }} />
-      <div id={`flag-${country}`} className="flag" style={{ backgroundImage: `url(${flagUrl})` }}>
+      <div id={`flag-${country}`} className="flag" style={{ backgroundImage: `url(${flagUrl})`, height: dimensions.height }}>
         <div
           className="blue-stripe"
           style={{ height: `${percentSubmerged}%` }}
@@ -85,7 +87,6 @@ if (rootElement) {
 } else {
   console.error("Root element not found");
 }
-
 
 // import React, { useState } from "react";
 // import ReactDOM from "react-dom/client";
