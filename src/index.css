@@ -1,4 +1,101 @@
+
 body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  background-color: #f4f6f8;
+}
+
+.app {
+  padding: 20px;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.settings-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.settings-tab {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background: white;
+  border: 1px solid #ddd;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.flags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.flag-container {
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.flag-container:hover {
+  transform: scale(1.05);
+}
+
+.flag-content {
+  position: relative;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.flag-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.blue-stripe {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #6699CC;
+  transition: height 0.3s ease-in-out;
+}
+
+.download-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.download-section .country-code {
+  margin-left: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+}
+
+.icon-button {
+  color: #444;
+  transition: color 0.3s;
+}
+
+.icon-button:hover {
+  color: #0056b3;
+}
+
+
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -36,7 +133,7 @@ code {
 .flags-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px; /* Add gap between flags */
+  gap: 20px; 
   justify-content: center;
 }
 
@@ -44,11 +141,11 @@ code {
   text-align: center;
   position: relative;
   display: inline-block;
-  padding-left: 10px; /* Add padding on the left */
-  padding-right: 10px; /* Add padding on the right */
-  background-color: #ffffff; /* Optional: Add a background color to the padding area */
-  border-radius: 10px; /* Optional: Add rounded corners */
-  margin-bottom: 20px; /* Add margin to create space between rows */
+  padding-left: 10px; 
+  padding-right: 10px; 
+  background-color: #ffffff; 
+  border-radius: 10px; 
+  margin-bottom: 20px; 
 }
 
 .flag-content {
@@ -69,9 +166,9 @@ code {
 
 .blue-stripe {
   position: absolute;
-  bottom: 0; /* Ensure the water rises from the bottom */
+  bottom: 0; 
   width: 100%;
-  background-color: #6699CC; /* Default blue color */
+  background-color: #6699CC; 
 }
 
 .download-section {
@@ -86,47 +183,4 @@ code {
   font-weight: bold;
 }
 
-
-
-/* 
-.app {
-  padding: 20px;
-  font-family: sans-serif;
-}
-
-.flag-container {
-  margin-top: 20px;
-  text-align: center;
-  position: relative;
-  display: inline-block;
-}
-
-.flag {
-  position: relative;
-  width: 100%;
-  background-size: cover;
-  background-position: center;
-  border: 1px solid #000;
-  overflow: hidden;
-}
-
-.blue-stripe {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background-color: #6699CC; 
-}
-
-.flag-label {
-  margin-top: 10px;
-  color: black;
-  font-weight: bold;
-}
-
-.download-button {
-  position: absolute;
-  bottom: -40px; 
-  right: 0;
-} 
-
-*/
+ */
