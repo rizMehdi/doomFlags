@@ -97,7 +97,8 @@ function App() {
           </FormControl>
         </div>
       )}
-      <h1>Sea Level Impact App</h1>
+      <h1>Future Flags of Partially Submerged Nations</h1>
+      Move the slider to see the impact of sea-level rise on flags. The blue stripe represents the percentage of the country submerged under water due to melting ice caps.
       <Slider
         min={0}
         max={10}
