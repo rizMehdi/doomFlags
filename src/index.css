@@ -1,33 +1,74 @@
 body {
   margin: 0;
-  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-  background-color: #f4f6f8;
-}
-.flag-container {
-  background: white;
-  border-radius: 12px; /* Rounded corners for the container */
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-  text-align: left;
-  transition: transform 0.2s ease-in-out;
-  overflow: hidden;
-  display: inline-block;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.flag-container:hover {
-  transform: scale(1.05);
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.app {
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+.settings-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.settings-tab {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  z-index: 1000;
+}
+
+.flags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Add gap between flags */
+  justify-content: center;
+}
+
+.flag-container {
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  padding: 10px; /* Add padding around the flag container */
+  background-color: #ffffff; /* Optional: Add a background color to the padding area */
+  border-radius: 10px; /* Optional: Add rounded corners */
+  margin-bottom: 20px; /* Add margin to create space between rows */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow for better visual separation */
 }
 
 .flag-content {
   position: relative;
-  height: 200px; /* Fixed height */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.flag {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid #000;
+  overflow: hidden;
 }
 
 .flag-image {
-  height: 100%;
-  width: auto; /* Width adjusts based on aspect ratio */
+  width: 100%; /* Ensure the flag image takes the full width */
+  height: auto; /* Maintain aspect ratio */
   object-fit: cover;
   border-radius: 0; /* No rounded corners for the flag itself */
 }
@@ -37,6 +78,7 @@ body {
   bottom: 0;
   width: 100%;
   transition: height 0.3s ease-in-out;
+  background-color: #6699CC; /* Default blue color */
 }
 
 .flag-footer {
@@ -47,25 +89,21 @@ body {
   background: #fff;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
+  width: 100%; /* Ensure the footer takes the full width */
+}
+
+.download-section {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 10px;
 }
 
 .country-code {
+  margin-left: 5px;
   font-weight: bold;
-  font-size: 14px;
-  color: #333;
 }
 
-.download-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #0056b3;
-  transition: color 0.3s;
-}
-
-.download-button:hover {
-  color: #003366;
-}
 
 
 /* body {
