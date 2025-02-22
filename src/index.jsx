@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { IconButton } from "@mui/material";
+import { Slider, IconButton } from "@mui/material";  // Ensure Slider is imported
 import DownloadIcon from '@mui/icons-material/Download';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { toPng } from 'html-to-image';
@@ -63,14 +63,14 @@ const Flag = ({ country, waterLevel, blueShade }) => {
 function App() {
   const [waterLevel, setWaterLevel] = useState(0);
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const [blueShade, setBlueShade] = useState("#6699CC");  // Default to Light Blue
+  const [blueShade, setBlueShade] = useState("#6699CC");
   const [customBlueShade, setCustomBlueShade] = useState("#6699CC");
 
   const handleSettingsToggle = () => {
     setSettingsOpen(!settingsOpen);
   };
 
-  const handleCustomBlueShadeChange = (color) => {  // Updated function
+  const handleCustomBlueShadeChange = (color) => {
     setCustomBlueShade(color);
     setBlueShade(color);
   };
@@ -94,7 +94,7 @@ function App() {
       {settingsOpen && (
         <div className="settings-tab">
           <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'center' }}>
-            <HexColorPicker  // Updated component
+            <HexColorPicker
               color={customBlueShade}
               onChange={handleCustomBlueShadeChange}
             />
