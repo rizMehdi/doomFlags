@@ -5,13 +5,10 @@ import { Slider, IconButton, MenuItem, Select, FormControl, InputLabel, TextFiel
 import DownloadIcon from '@mui/icons-material/Download';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { toPng } from 'html-to-image';
-import ColorPicker from '@rc-component/color-picker';
-import '@rc-component/color-picker/assets/index.css';
+// import ColorPicker from '@rc-component/color-picker';
+// import '@rc-component/color-picker/assets/index.css';
 
 // import { ColorPickerComponent } from '@syncfusion/ej2-react-inputs';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-
-import { ColorPickerComponent } from '@syncfusion/ej2-react-inputs';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Mock data: Percentage submerged per meter of sea-level rise
@@ -146,11 +143,6 @@ function App() {
               />
             </>
           )}
-          <ColorPickerComponent
-            id="color-picker"
-            value={blueShade}
-            change={(args) => setBlueShade(args.currentValue.hex)}
-          />
         </div>
       )}
       <h1>Future Flags of The Submerged Nations</h1>
@@ -172,7 +164,7 @@ function App() {
           <Flag key={country} country={country} waterLevel={waterLevel} blueShade={blueShade} />
         ))}
       </div>
-      <h2>React Color Picker</h2>
+      {/* <h2>React Color Picker</h2>
       <ColorPickerComponent
         id="color-picker"
         value={color}
@@ -188,7 +180,7 @@ function App() {
         }}
       >
         Selected Color: {color}
-      </div>
+      </div> */}
     </div>
   );
 }
