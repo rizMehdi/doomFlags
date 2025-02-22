@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { Slider, IconButton, MenuItem, Select, FormControl, InputLabel, TextField } from "@mui/material";
+import { IconButton } from "@mui/material";
 import DownloadIcon from '@mui/icons-material/Download';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { toPng } from 'html-to-image';
-import { HexColorPicker } from "react-colorful";  // #new#
+import { HexColorPicker } from "react-colorful";
 
 const countryData = {
   NL: 6.2,
@@ -63,20 +63,11 @@ const Flag = ({ country, waterLevel, blueShade }) => {
 function App() {
   const [waterLevel, setWaterLevel] = useState(0);
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const [blueShade, setBlueShade] = useState("#6699CC");
+  const [blueShade, setBlueShade] = useState("#6699CC");  // Default to Light Blue
   const [customBlueShade, setCustomBlueShade] = useState("#6699CC");
 
   const handleSettingsToggle = () => {
     setSettingsOpen(!settingsOpen);
-  };
-
-  const handleBlueShadeChange = (event) => {
-    const value = event.target.value;
-    if (value === "custom") {
-      setBlueShade(customBlueShade);
-    } else {
-      setBlueShade(value);
-    }
   };
 
   const handleCustomBlueShadeChange = (color) => {  // Updated function
@@ -102,28 +93,12 @@ function App() {
       </div>
       {settingsOpen && (
         <div className="settings-tab">
-          <FormControl fullWidth>
-            <InputLabel id="blue-shade-label">Blue Shade</InputLabel>
-            <Select
-              labelId="blue-shade-label"
-              value={blueShade === customBlueShade ? "custom" : blueShade}
-              label="Blue Shade"
-              onChange={handleBlueShadeChange}
-            >
-              <MenuItem value="#6699CC">Light Blue</MenuItem>
-              <MenuItem value="#336699">Medium Blue</MenuItem>
-              <MenuItem value="#003366">Dark Blue</MenuItem>
-              <MenuItem value="custom">Custom</MenuItem>
-            </Select>
-          </FormControl>
-          {blueShade === "custom" && (
-            <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'center' }}>
-              <HexColorPicker  // Updated component
-                color={customBlueShade}
-                onChange={handleCustomBlueShadeChange}
-              />
-            </div>
-          )}
+          <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'center' }}>
+            <HexColorPicker  // Updated component
+              color={customBlueShade}
+              onChange={handleCustomBlueShadeChange}
+            />
+          </div>
         </div>
       )}
       <h1>Future Flags of The Submerged Nations</h1>
