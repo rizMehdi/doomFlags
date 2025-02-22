@@ -76,6 +76,11 @@ function App() {
     setBlueShade(color);
   };
 
+  const handleResetColor = () => {
+    setCustomBlueShade("#6699CC");
+    setBlueShade("#6699CC");
+  };
+
   const marks = [
     { value: 0, label: '0m' },
     { value: 2, label: '2m' },
@@ -96,12 +101,13 @@ function App() {
       </div>
       {settingsOpen && (
         <div className="settings-tab">
-          <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'center' }}>
+          <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
             {/* <HexColorPicker
               color={customBlueShade}
               onChange={handleCustomBlueShadeChange}
             /> */}
-            <ColorPicker alpha={true} onChange={value => { setCustomBlueShade(value.hex); setBlueShade(value.hex); }} />  // New component
+            <ColorPicker alpha={true} onChange={value => { setCustomBlueShade(value.hex); setBlueShade(value.hex); }} />
+            <button onClick={handleResetColor} style={{ marginTop: '10px' }}>Reset Color</button>
           </div>
         </div>
       )}
