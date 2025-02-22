@@ -9,10 +9,11 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
   },
+  build: {
+    rollupOptions: {
+      external: [
+        'bootstrap/dist/css/bootstrap.min.css'
+      ]
+    }
+  }
 })
-
-
-// export default defineConfig({
-//   plugins: [react()],
-//   base: "/doomFlags/", // Ensure correct base path for GitHub Pages
-// });
