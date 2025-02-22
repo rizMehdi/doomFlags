@@ -7,7 +7,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import { toPng } from 'html-to-image';
 
 import { ColorPickerComponent } from '@syncfusion/ej2-react-inputs';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Mock data: Percentage submerged per meter of sea-level rise
 const countryData = {
