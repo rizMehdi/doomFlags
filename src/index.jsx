@@ -61,7 +61,7 @@ const Flag = ({ country, waterLevel, blueShade }) => {
 };
 
 function App() {
-  const [waterLevel, setWaterLevel] = useState(0);
+  const [waterLevel, setWaterLevel] = useState(2);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [blueShade, setBlueShade] = useState("#6699CC");
   const [customBlueShade, setCustomBlueShade] = useState("#6699CC");
@@ -82,6 +82,8 @@ function App() {
     { value: 6, label: '6m' },
     { value: 8, label: '8m' },
     { value: 10, label: '10m' },
+    { value: 12, label: '12m' },
+    { value: 14, label: '14m' },
   ];
 
   return (
@@ -107,7 +109,7 @@ function App() {
       <div className="slider-container">
         <Slider
           min={0}
-          max={10}
+          max={14}
           step={0.1}
           value={waterLevel}
           onChange={(e, newValue) => setWaterLevel(newValue)}
