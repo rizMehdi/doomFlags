@@ -161,23 +161,6 @@ function App() {
           <Flag key={country} country={country} waterLevel={waterLevel} blueShade={blueShade} />
         ))}
       </div>
-      <h2>React Color Picker</h2>
-      <ColorPickerComponent
-        id="color-picker"
-        value={color}
-        change={handleColorChange}
-      />
-      <div
-        style={{
-          marginTop: '20px',
-          padding: '20px',
-          backgroundColor: color,
-          color: '#fff',
-          textAlign: 'center',
-        }}
-      >
-        Selected Color: {color}
-      </div>
     </div>
   );
 }
