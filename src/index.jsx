@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { Slider, IconButton, MenuItem, Select, FormControl, InputLabel, TextField } from "@mui/material";
-import DownloadIcon from "@mui/icons-material/Download";
-import SettingsIcon from "@mui/icons-material/Settings";
-import { toPng } from "html-to-image";
+import DownloadIcon from '@mui/icons-material/Download';
+import SettingsIcon from '@mui/icons-material/Settings';
+import { toPng } from 'html-to-image';
+import ColorPicker from '@rc-component/color-picker';  // #new#
+import '@rc-component/color-picker/assets/index.css';  // #new#
 
 const countryData = {
   NL: 6.2,
@@ -21,7 +23,10 @@ const Flag = ({ country, waterLevel, blueShade }) => {
 
   const handleImageLoad = (e) => {
     const aspectRatio = e.target.naturalWidth / e.target.naturalHeight;
-    setDimensions({ width: 200 * aspectRatio, height: 200 });
+    setDimensions({
+      width: 200 * aspectRatio,
+      height: 200,
+    });
   };
 
   const handleDownload = () => {
@@ -33,7 +38,9 @@ const Flag = ({ country, waterLevel, blueShade }) => {
         link.href = dataUrl;
         link.click();
       })
-      .catch((error) => console.error("Download failed!", error));
+      .catch((error) => {
+        console.error('oops, something went wrong!', error);
+      });
   };
 
   const percentSubmerged = Math.min(countryData[country] * waterLevel, 100);
@@ -46,7 +53,7 @@ const Flag = ({ country, waterLevel, blueShade }) => {
       </div>
       <div className="flag-footer">
         <span className="country-code">{country}</span>
-        <IconButton onClick={handleDownload} aria-label="download">
+        <IconButton onClick={handleDownload} aria-label="download" className="download-button">
           <DownloadIcon />
         </IconButton>
       </div>
@@ -60,23 +67,37 @@ function App() {
   const [blueShade, setBlueShade] = useState("#6699CC");
   const [customBlueShade, setCustomBlueShade] = useState("#6699CC");
 
+  const handleSettingsToggle = () => {
+    setSettingsOpen(!settingsOpen);
+  };
+
   const handleBlueShadeChange = (event) => {
-    setBlueShade(event.target.value === "custom" ? customBlueShade : event.target.value);
+    const value = event.target.value;
+    if (value === "custom") {
+      setBlueShade(customBlueShade);
+    } else {
+      setBlueShade(value);
+    }
+  };
+
+  const handleCustomBlueShadeChange = (color) => {  // #new#
+    setCustomBlueShade(color.hex);  // #new#
+    setBlueShade(color.hex);  // #new#
   };
 
   const marks = [
-    { value: 0, label: "0m" },
-    { value: 2, label: "2m" },
-    { value: 4, label: "4m" },
-    { value: 6, label: "6m" },
-    { value: 8, label: "8m" },
-    { value: 10, label: "10m" },
+    { value: 0, label: '0m' },
+    { value: 2, label: '2m' },
+    { value: 4, label: '4m' },
+    { value: 6, label: '6m' },
+    { value: 8, label: '8m' },
+    { value: 10, label: '10m' },
   ];
 
   return (
     <div className="app">
       <div className="settings-icon">
-        <IconButton onClick={() => setSettingsOpen(!settingsOpen)} aria-label="settings">
+        <IconButton onClick={handleSettingsToggle} aria-label="settings">
           <SettingsIcon />
         </IconButton>
       </div>
@@ -84,27 +105,30 @@ function App() {
         <div className="settings-tab">
           <FormControl fullWidth>
             <InputLabel id="blue-shade-label">Blue Shade</InputLabel>
-            <Select labelId="blue-shade-label" value={blueShade} onChange={handleBlueShadeChange}>
+            <Select
+              labelId="blue-shade-label"
+              value={blueShade === customBlueShade ? "custom" : blueShade}
+              label="Blue Shade"
+              onChange={handleBlueShadeChange}
+            >
               <MenuItem value="#6699CC">Light Blue</MenuItem>
               <MenuItem value="#336699">Medium Blue</MenuItem>
               <MenuItem value="#003366">Dark Blue</MenuItem>
               <MenuItem value="custom">Custom</MenuItem>
             </Select>
           </FormControl>
-          {blueShade === "custom" && (
-            <TextField
-              label="Custom Blue Shade"
-              type="color"
-              value={customBlueShade}
-              onChange={(e) => setCustomBlueShade(e.target.value)}
-              fullWidth
-              margin="normal"
-            />
+          {blueShade === "custom" && (  // #new#
+            <div style={{ marginTop: '10px' }}>  // #new#
+              <ColorPicker  // #new#
+                value={customBlueShade}  // #new#
+                onChange={handleCustomBlueShadeChange}  // #new#
+              />  // #new#
+            </div>  // #new#
           )}
         </div>
       )}
       <h1>Future Flags of The Submerged Nations</h1>
-      <p className="paragraph">Move the slider to see the impact of sea-level rise on flags.</p>
+      <p className="paragraph">Move the slider to see the impact of sea-level rise on flags. The blue stripe represents the percentage of the country submerged under water due to melting ice caps.</p>
       <div className="slider-container">
         <Slider
           min={0}
@@ -112,6 +136,7 @@ function App() {
           step={0.1}
           value={waterLevel}
           onChange={(e, newValue) => setWaterLevel(newValue)}
+          aria-label="Water Level Slider"
           marks={marks}
         />
       </div>
@@ -126,7 +151,8 @@ function App() {
 
 const rootElement = document.getElementById("root");
 if (rootElement) {
-  ReactDOM.createRoot(rootElement).render(<App />);
+  const root = ReactDOM.createRoot(rootElement);
+  root.render(<App />);
 } else {
   console.error("Root element not found");
 }
