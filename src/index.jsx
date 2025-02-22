@@ -5,8 +5,7 @@ import { Slider, IconButton, MenuItem, Select, FormControl, InputLabel, TextFiel
 import DownloadIcon from '@mui/icons-material/Download';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { toPng } from 'html-to-image';
-import ColorPicker from '@rc-component/color-picker';  // #new#
-import '@rc-component/color-picker/assets/index.css';  // #new#
+import { HexColorPicker } from "react-colorful";  // #new#
 
 const countryData = {
   NL: 6.2,
@@ -80,9 +79,9 @@ function App() {
     }
   };
 
-  const handleCustomBlueShadeChange = (color) => {  // #new#
-    setCustomBlueShade(color.hex);  // #new#
-    setBlueShade(color.hex);  // #new#
+  const handleCustomBlueShadeChange = (color) => {  // Updated function
+    setCustomBlueShade(color);
+    setBlueShade(color);
   };
 
   const marks = [
@@ -118,9 +117,9 @@ function App() {
             </Select>
           </FormControl>
           {blueShade === "custom" && (
-            <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'center' }}>  // Adjusted style
-              <ColorPicker
-                value={customBlueShade}
+            <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'center' }}>
+              <HexColorPicker  // Updated component
+                color={customBlueShade}
                 onChange={handleCustomBlueShadeChange}
               />
             </div>
