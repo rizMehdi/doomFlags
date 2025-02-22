@@ -9,39 +9,6 @@ import { toPng } from 'html-to-image';
 import { ColorPickerComponent } from '@syncfusion/ej2-react-inputs';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const App = () => {
-  const [color, setColor] = useState('#0088cc');
-
-  const handleColorChange = (args) => {
-    setColor(args.currentValue.hex);
-  };
-
-  return (
-    <div className="app">
-      <h2>React Color Picker</h2>
-      <ColorPickerComponent
-        id="color-picker"
-        value={color}
-        change={handleColorChange}
-      />
-      <div
-        style={{
-          marginTop: '20px',
-          padding: '20px',
-          backgroundColor: color,
-          color: '#fff',
-          textAlign: 'center',
-        }}
-      >
-        Selected Color: {color}
-      </div>
-    </div>
-  );
-};
-
-ReactDOM.render(<App />, document.getElementById('root'));
-
-
 // Mock data: Percentage submerged per meter of sea-level rise
 const countryData = {
   NL: 6.2, // Netherlands
@@ -101,6 +68,7 @@ function App() {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [blueShade, setBlueShade] = useState("#6699CC");
   const [customBlueShade, setCustomBlueShade] = useState("#6699CC");
+  const [color, setColor] = useState('#0088cc');
 
   const handleSettingsToggle = () => {
     setSettingsOpen(!settingsOpen);
@@ -119,6 +87,10 @@ function App() {
     const value = event.target.value;
     setCustomBlueShade(value);
     setBlueShade(value);
+  };
+
+  const handleColorChange = (args) => {
+    setColor(args.currentValue.hex);
   };
 
   const marks = [
@@ -188,6 +160,23 @@ function App() {
         {Object.keys(countryData).map((country) => (
           <Flag key={country} country={country} waterLevel={waterLevel} blueShade={blueShade} />
         ))}
+      </div>
+      <h2>React Color Picker</h2>
+      <ColorPickerComponent
+        id="color-picker"
+        value={color}
+        change={handleColorChange}
+      />
+      <div
+        style={{
+          marginTop: '20px',
+          padding: '20px',
+          backgroundColor: color,
+          color: '#fff',
+          textAlign: 'center',
+        }}
+      >
+        Selected Color: {color}
       </div>
     </div>
   );
