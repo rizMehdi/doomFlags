@@ -11,6 +11,9 @@ import '@rc-component/color-picker/assets/index.css';
 // import { ColorPickerComponent } from '@syncfusion/ej2-react-inputs';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
+import { ColorPickerComponent } from '@syncfusion/ej2-react-inputs';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+
 // Mock data: Percentage submerged per meter of sea-level rise
 const countryData = {
   NL: 6.2, // Netherlands
@@ -143,6 +146,11 @@ function App() {
               />
             </>
           )}
+          <ColorPickerComponent
+            id="color-picker"
+            value={blueShade}
+            change={(args) => setBlueShade(args.currentValue.hex)}
+          />
         </div>
       )}
       <h1>Future Flags of The Submerged Nations</h1>
@@ -163,6 +171,23 @@ function App() {
         {Object.keys(countryData).map((country) => (
           <Flag key={country} country={country} waterLevel={waterLevel} blueShade={blueShade} />
         ))}
+      </div>
+      <h2>React Color Picker</h2>
+      <ColorPickerComponent
+        id="color-picker"
+        value={color}
+        change={handleColorChange}
+      />
+      <div
+        style={{
+          marginTop: '20px',
+          padding: '20px',
+          backgroundColor: color,
+          color: '#fff',
+          textAlign: 'center',
+        }}
+      >
+        Selected Color: {color}
       </div>
     </div>
   );
