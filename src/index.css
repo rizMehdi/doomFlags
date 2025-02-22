@@ -114,6 +114,13 @@ code {
   margin: 0 auto; 
 } */
 
+.color-picker-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+
 .slider-container {
   width: 500px; /* Set the width of the slider */
   margin: 20px 0; /* Add top and bottom margin */
