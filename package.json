@@ -9,6 +9,7 @@
     "@mui/icons-material": "^6.4.3",
     "@mui/material": "^6.4.3",
     "@mui/styled-engine": "^6.4.3",
+    "@rc-component/color-picker": "^2.0.1",
     "@shadcn/ui": "^0.0.4",
     "@syncfusion/ej2-react-inputs": "^28.2.3",
     "@testing-library/jest-dom": "^5.16.5",

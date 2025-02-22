@@ -117,13 +117,13 @@ function App() {
               <MenuItem value="custom">Custom</MenuItem>
             </Select>
           </FormControl>
-          {blueShade === "custom" && (  // #new#
-            <div style={{ marginTop: '10px' }}>  // #new#
-              <ColorPicker  // #new#
-                value={customBlueShade}  // #new#
-                onChange={handleCustomBlueShadeChange}  // #new#
-              />  // #new#
-            </div>  // #new#
+          {blueShade === "custom" && (
+            <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'center' }}>  // Adjusted style
+              <ColorPicker
+                value={customBlueShade}
+                onChange={handleCustomBlueShadeChange}
+              />
+            </div>
           )}
         </div>
       )}
