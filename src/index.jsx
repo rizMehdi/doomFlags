@@ -5,8 +5,10 @@ import { Slider, IconButton, MenuItem, Select, FormControl, InputLabel, TextFiel
 import DownloadIcon from '@mui/icons-material/Download';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { toPng } from 'html-to-image';
+import ColorPicker from '@rc-component/color-picker';
+import '@rc-component/color-picker/assets/index.css';
 
-import { ColorPickerComponent } from '@syncfusion/ej2-react-inputs';
+// import { ColorPickerComponent } from '@syncfusion/ej2-react-inputs';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Mock data: Percentage submerged per meter of sea-level rise
@@ -126,20 +128,21 @@ function App() {
             </Select>
           </FormControl>
           {blueShade === "custom" && (
-            <TextField
-              label="Custom Blue Shade"
-              type="color"
-              value={customBlueShade}
-              onChange={handleCustomBlueShadeChange}
-              fullWidth
-              margin="normal"
-            />
+            <>
+              <TextField
+                label="Custom Blue Shade"
+                type="color"
+                value={customBlueShade}
+                onChange={handleCustomBlueShadeChange}
+                fullWidth
+                margin="normal"
+              />
+              <ColorPicker
+                value={blueShade}
+                onChange={(color) => setBlueShade(color.hex)}
+              />
+            </>
           )}
-          <ColorPickerComponent
-            id="color-picker"
-            value={blueShade}
-            change={(args) => setBlueShade(args.currentValue.hex)}
-          />
         </div>
       )}
       <h1>Future Flags of The Submerged Nations</h1>
