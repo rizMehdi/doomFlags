@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { Slider, IconButton } from "@mui/material";  // Ensure Slider is imported
+import { Slider, IconButton } from "@mui/material";
 import DownloadIcon from '@mui/icons-material/Download';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { toPng } from 'html-to-image';
-import { HexColorPicker } from "react-colorful";
+// import { HexColorPicker } from "react-colorful";  // Commented out
+import { ColorPicker } from '@douyinfe/semi-ui';  // New import
 
 const countryData = {
   NL: 6.2,
@@ -96,15 +97,15 @@ function App() {
       {settingsOpen && (
         <div className="settings-tab">
           <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'center' }}>
-            <HexColorPicker
+            {/* <HexColorPicker
               color={customBlueShade}
               onChange={handleCustomBlueShadeChange}
-            />
+            /> */}
+            <ColorPicker alpha={true} onChange={value => { setCustomBlueShade(value.hex); setBlueShade(value.hex); }} />  // New component
           </div>
         </div>
       )}
       <h1>Future Flags of The Submerged Nations</h1>
-      {/* <p className="paragraph" style={{ textAlign: 'left' }}>Move the slider to see the impact of sea-level rise on flags. The blue stripe represents the percentage of the country submerged under water due to melting ice caps.</p> */}
       <p> Move the slider to see the impact of sea-level rise on flags. The blue stripe represents the percentage of the country submerged under water due to melting ice caps</p>
       <div className="slider-container">
         <Slider
