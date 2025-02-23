@@ -46,16 +46,14 @@ const Flag = ({ country, waterLevel, blueShade }) => {
   const percentSubmerged = Math.min(countryData[country] * waterLevel, 100);
 
   return (
-    <div className="mdl-card mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-shadow--2dp">
-      <figure className="mdl-card__media">
+    <div className="flag-container" style={{ width: dimensions.width + 20, height: dimensions.height + 40 }}>
+      <div id={`flag-content-${country}`} className="flag-content" style={{ width: dimensions.width, height: dimensions.height }}>
         <img src={flagUrl} alt={`${country} flag`} onLoad={handleImageLoad} className="flag-image" />
         <div className="blue-stripe" style={{ height: `${percentSubmerged}%`, backgroundColor: blueShade }}></div>
-      </figure>
-      <div className="mdl-card__title">
-        <h1 className="mdl-card__title-text">{country}</h1>
       </div>
-      <div className="mdl-card__actions mdl-card--border">
-        <IconButton onClick={handleDownload} aria-label="download" className="mdl-button mdl-button--icon mdl-button--colored">
+      <div className="flag-footer">
+        <span className="country-code">{country}</span>
+        <IconButton onClick={handleDownload} aria-label="download" className="download-button">
           <DownloadIcon />
         </IconButton>
       </div>
@@ -95,44 +93,42 @@ function App() {
   ];
 
   return (
-    <div className="mdl-layout mdl-js-layout mdl-color--grey-100">
-      <main className="mdl-layout__content">
-        <div className="settings-icon">
-          <IconButton onClick={handleSettingsToggle} aria-label="settings">
-            <SettingsIcon />
-          </IconButton>
-        </div>
-        {settingsOpen && (
-          <div className="settings-tab">
-            <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
-              {/* <HexColorPicker
-                color={customBlueShade}
-                onChange={handleCustomBlueShadeChange}
-              /> */}
-              <ColorPicker alpha={true} onChange={value => { setCustomBlueShade(value.hex); setBlueShade(value.hex); }} />
-              <button onClick={handleResetColor} style={{ marginTop: '10px' }}>Reset Color</button>
-            </div>
+    <div className="app">
+      <div className="settings-icon">
+        <IconButton onClick={handleSettingsToggle} aria-label="settings">
+          <SettingsIcon />
+        </IconButton>
+      </div>
+      {settingsOpen && (
+        <div className="settings-tab">
+          <div style={{ marginTop: '10px', display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
+            {/* <HexColorPicker
+              color={customBlueShade}
+              onChange={handleCustomBlueShadeChange}
+            /> */}
+            <ColorPicker alpha={true} onChange={value => { setCustomBlueShade(value.hex); setBlueShade(value.hex); }} />
+            <button onClick={handleResetColor} style={{ marginTop: '10px' }}>Reset Color</button>
           </div>
-        )}
-        <h1>Future Flags of The Submerged Nations</h1>
-        <p> Move the slider to see the impact of sea-level rise on flags. The blue stripe represents the percentage of the country submerged under water due to melting ice caps</p>
-        <div className="slider-container">
-          <Slider
-            min={0}
-            max={14}
-            step={0.1}
-            value={waterLevel}
-            onChange={(e, newValue) => setWaterLevel(newValue)}
-            aria-label="Water Level Slider"
-            marks={marks}
-          />
         </div>
-        <div className="mdl-grid">
-          {Object.keys(countryData).map((country) => (
-            <Flag key={country} country={country} waterLevel={waterLevel} blueShade={blueShade} />
-          ))}
-        </div>
-      </main>
+      )}
+      <h1>Future Flags of The Submerged Nations</h1>
+      <p> Move the slider to see the impact of sea-level rise on flags. The blue stripe represents the percentage of the country submerged under water due to melting ice caps</p>
+      <div className="slider-container">
+        <Slider
+          min={0}
+          max={14}
+          step={0.1}
+          value={waterLevel}
+          onChange={(e, newValue) => setWaterLevel(newValue)}
+          aria-label="Water Level Slider"
+          marks={marks}
+        />
+      </div>
+      <div className="flags-container">
+        {Object.keys(countryData).map((country) => (
+          <Flag key={country} country={country} waterLevel={waterLevel} blueShade={blueShade} />
+        ))}
+      </div>
     </div>
   );
 }
