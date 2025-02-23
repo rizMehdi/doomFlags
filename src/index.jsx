@@ -90,6 +90,14 @@ function App() {
     { value: 10, label: '10m' },
     { value: 12, label: '12m' },
     { value: 14, label: '14m' },
+    { value: 16, label: '16m' },
+    { value: 18, label: '18m' },
+    { value: 20, label: '20m' },
+    { value: 22, label: '22m' },
+    { value: 24, label: '24m' },
+    { value: 26, label: '26m' },
+    { value: 28, label: '28m' },
+    { value: 30, label: '30m' }
   ];
 
   return (
@@ -111,12 +119,12 @@ function App() {
           </div>
         </div>
       )}
-      <h1>Future Flags of The Submerged Nations</h1>
+      <h1>Flags of The Submerged Nations</h1>
       <p> Move the slider to see the impact of sea-level rise on flags. The blue stripe represents the percentage of the country submerged under water due to melting ice caps</p>
       <div className="slider-container">
         <Slider
           min={0}
-          max={14}
+          max={30}
           step={0.1}
           value={waterLevel}
           onChange={(e, newValue) => setWaterLevel(newValue)}

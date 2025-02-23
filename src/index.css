@@ -51,7 +51,7 @@ code {
   padding-right: 10px; /* Add padding on the right */
   background-color: #ffffff; /* Optional: Add a background color to the padding area */
   border-radius: 10px; /* Optional: Add rounded corners */
-  margin-bottom: 20px; /* Add margin to create space between rows */
+  margin-bottom: 30px; /* Add margin to create space between rows */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow for better visual separation */
 }
 
