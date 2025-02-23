@@ -53,6 +53,7 @@ code {
   border-radius: 10px; /* Optional: Add rounded corners */
   margin-bottom: 30px; /* Add margin to create space between rows */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow for better visual separation */
+  overflow: hidden; /* Ensure content stays within the container */
 }
 
 .flag-content {
@@ -94,7 +95,8 @@ code {
   background: #fff;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
-  width: 100%; /* Ensure the footer takes the full width */
+  width: calc(100% - 20px); /* Adjust width to account for padding */
+  margin: 0 auto; /* Center the footer */
 }
 
 .download-section {
